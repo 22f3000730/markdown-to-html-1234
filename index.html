@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown to HTML Converter</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        #markdown-output {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Markdown to HTML Converter</h1>
+    <div id="markdown-output"></div>
+
+    <script>
+        // Decode base64 markdown content
+        const base64Markdown = "IyBQcm9qZWN0IE92ZXJ2aWV3CgpUaGlzIGlzIGEgKipzYW1wbGUgTWFya2Rvd24gZmlsZSoqIHRvIHRlc3QgTWFya2Rvd24tdG8tSFRNTCBjb252ZXJzaW9uLiAgCkl0IGluY2x1ZGVzIG11bHRpcGxlIE1hcmtkb3duIGZlYXR1cmVzIGZvciB0aG9yb3VnaCB0ZXN0aW5nLgoKIyMgRmVhdHVyZXMKCi0gSGVhZGluZ3MgKGAjYCwgYCMjYCwgYCMjI2ApCi0gT3JkZXJlZCBhbmQgdW5vcmRlcmVkIGxpc3RzCi0gTGlua3MgYW5kIGltYWdlcwotIElubGluZSBjb2RlIGFuZCBjb2RlIGJsb2NrcwotIFRhYmxlcyBhbmQgYmxvY2txdW90ZXMKCi0tLQoKIyMgTGlua3MgJiBJbWFnZXMKCi0gTGluayB0byBbT3BlbkFJXShodHRwczovL29wZW5haS5jb20pCi0gSW1hZ2UgZXhhbXBsZToKCiFbU2FtcGxlIEltYWdlXShodHRwczovL3ZpYS5wbGFjZWhvbGRlci5jb20vMTUwKQoKLS0tCgojIyBDb2RlIEV4YW1wbGUgKFB5dGhvbikKCmBgYHB5dGhvbgpkZWYgZmlib25hY2NpKG4pOgogICAgYSwgYiA9IDAsIDEKICAgIHJlc3VsdCA9IFtdCiAgICBmb3IgXyBpbiByYW5nZShuKToKICAgICAgICByZXN1bHQuYXBwZW5kKGEpCiAgICAgICAgYSwgYiA9IGIsIGEgKyBiCiAgICByZXR1cm4gcmVzdWx0CgpwcmludChmaWJvbmFjY2koMTApKQpgYGA=";
+        const markdownText = atob(base64Markdown);
+        
+        // Convert markdown to HTML
+        const htmlContent = marked.parse(markdownText);
+        
+        // Insert HTML into the output div
+        document.getElementById('markdown-output').innerHTML = htmlContent;
+        
+        // Highlight code blocks
+        hljs.highlightAll();
+    </script>
+</body>
+</html>
